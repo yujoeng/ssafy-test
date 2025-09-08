@@ -17,3 +17,14 @@
 각 테스트 케이스마다 단조 증가하는 수인 Ai x Aj중에서 그 최댓값을 출력한다.
 만약 Ai x Aj중에서 단조 증가하는 수가 없다면 -1을 출력한다.
 '''
+
+T= int(input())
+for tc in range(1, T+1):
+    N = int(input())
+    for i in range(N-1):
+        for j in range(j+1,N):
+            num = A[i] * A[j]
+            # 단조증가 
+
+            if 단조증가 
+            
