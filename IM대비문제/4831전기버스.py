@@ -31,7 +31,7 @@ T=int(input())
 
 for tc in range(1, T+1):
     K, N, M = map(int, input().split())
-    charge = list(map(int, (input().split())))    # 충전기가 설치된 정류장 번호 
+    charge = list(map(int, input().split()))    # 충전기가 설치된 정류장 번호 
     # 출발부터 종점까지 버스정류장 
     # f_bs = list(range(0, N+1)) 
     # print(f_bs)
