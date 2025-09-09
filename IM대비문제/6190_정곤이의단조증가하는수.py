@@ -47,11 +47,12 @@ for tc in range(1, T+1):
     print(ans)
 
 '''
+
+# 숫자의 각 자릿수가 d1 <= d2 <= ... <= dk 인지 확인
 # import sys
 # input = sys.stdin.readline # 더 빠른 입력 함수로 교체 
 T = int(input())          # 테스트 케이스 수
 
-# 숫자의 각 자릿수가 d1 <= d2 <= ... <= dk 인지 확인
 def is_monotone(n: int) -> bool:
     s = str(n)                      # 정수를 문자열로 바꿔 각 자릿수를 비교
     for i in range(len(s) - 1):     # 인접한 자리끼리 비교
