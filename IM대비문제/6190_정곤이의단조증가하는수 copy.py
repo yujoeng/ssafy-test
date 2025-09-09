@@ -48,34 +48,45 @@ for tc in range(1, T+1):
 
 '''
 
-# 숫자의 각 자릿수가 d1 <= d2 <= ... <= dk 인지 확인
-# import sys
-# input = sys.stdin.readline # 더 빠른 입력 함수로 교체 
+숫자의 각 자릿수가 d1 <= d2 <= ... <= dk 인지 확인
+import sys
+input = sys.stdin.readline # 더 빠른 입력 함수로 교체 
 
-# def is_monotone(n: int) -> bool:
-#     s = str(n)                      # 정수를 문자열로 바꿔 각 자릿수를 비교
-#     for i in range(len(s) - 1):     # 인접한 자리끼리 비교
-#         if s[i] > s[i + 1]:         # 앞자리가 뒷자리보다 크면 단조 증가 아님
-#             return False
-#     return True                     # 끝까지 통과하면 단조 증가
+def is_monotone(n: int) -> bool:
+    s = str(n)                      # 정수를 문자열로 바꿔 각 자릿수를 비교
+    for i in range(len(s) - 1):     # 인접한 자리끼리 비교
+        if s[i] > s[i + 1]:         # 앞자리가 뒷자리보다 크면 단조 증가 아님
+            return False
+    return True                     # 끝까지 통과하면 단조 증가
 
-# T = int(input())          # 테스트 케이스 수
-# for _ in range(T):
-#     N = int(input())        # 수의 개수
-#     A = list(map(int, input().split()))  # 수열 A1..AN
-#     ans = -1                         # 단조 증가 곱이 없으면 -1 출력해야 하므로 초기값 -1
+T = int(input())          # 테스트 케이스 수
+for _ in range(T):
+    N = int(input())        # 수의 개수
+    arr = list(map(int, input().split()))  # 수열 A1..AN
+    ans = -1                         # 단조 증가 곱이 없으면 -1 출력해야 하므로 초기값 -1
 
-#     # 모든 쌍 (i, j), i < j 확인
-#     for i in range(N - 1):
-#         for j in range(i + 1, N):
-#             prod = A[i] * A[j]      # 두 수의 곱
-#             # 현재 최댓값보다 크고, 단조 증가이면 갱신
-#             if prod > ans and is_monotone(prod):
-#                 ans = prod
+    # 모든 쌍 (i, j), i < j 확인
+    for i in range(N):
+        first_pick = arr[i]
+        for j in range(i + 1, N):
+            second_pick = arr[j]
 
-#     print(ans)
+            target = first_pick * second_pick
 
-4 8 16 25
+            if is_monotone(target) == True:
+                if target > ans:
+                    ans =target
+
+
+
+    #         prod = A[i] * A[j]      # 두 수의 곱
+    #         # 현재 최댓값보다 크고, 단조 증가이면 갱신
+    #         if prod > ans and is_monotone(prod):
+    #             ans = prod
+
+    # print(ans)
+
+
 
 
 
@@ -84,3 +95,4 @@ for tc in range(1, T+1):
 
 T = int(input())          # 테스트 케이스 수
 for _ in range(1, T+1):
+    
