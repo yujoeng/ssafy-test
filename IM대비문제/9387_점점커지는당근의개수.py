@@ -12,3 +12,28 @@ N개의 당근을 수확하며, 당근의 크기 C는 1부터 10까지의 정수
 [출력]
 #테스트케이스번호와 연속으로 커지는 당근 개수의 최대값을 출력한다.
 '''
+
+T = int(input())
+
+for tc in range(1, T+1):
+    N = int(input())
+    c = list(map(int, input().split()))
+
+    cnt = 1 # 당근이 연속으로 커진 경우의 수를 입력받기 위함
+    max_idx = 1
+
+
+    for i in range(0, N-1):
+        if c[i] < c[i+1]: # 증가할 때
+            cnt += 1   # 인접한 당근끼리 크기를 비교함 
+        else:    # 비교 후 증가하지 않았을 경우 
+            cnt = 1 # 증가의 수 다시 초기화 하기
+
+        if max_idx < cnt: #  최대값 비교 후 
+            max_idx = cnt  # 최대값 입력 
+
+    print(f'#{tc} {max_idx}')
+
+
+
+        
