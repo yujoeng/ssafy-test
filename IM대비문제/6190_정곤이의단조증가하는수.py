@@ -47,8 +47,8 @@ for tc in range(1, T+1):
     print(ans)
 
 '''
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline # 더 빠른 입력 함수로 교체 
 T = int(input())          # 테스트 케이스 수
 
 # 숫자의 각 자릿수가 d1 <= d2 <= ... <= dk 인지 확인
