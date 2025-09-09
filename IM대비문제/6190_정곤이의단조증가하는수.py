@@ -51,7 +51,6 @@ for tc in range(1, T+1):
 # 숫자의 각 자릿수가 d1 <= d2 <= ... <= dk 인지 확인
 # import sys
 # input = sys.stdin.readline # 더 빠른 입력 함수로 교체 
-T = int(input())          # 테스트 케이스 수
 
 def is_monotone(n: int) -> bool:
     s = str(n)                      # 정수를 문자열로 바꿔 각 자릿수를 비교
@@ -60,9 +59,9 @@ def is_monotone(n: int) -> bool:
             return False
     return True                     # 끝까지 통과하면 단조 증가
 
-
+T = int(input())          # 테스트 케이스 수
 for _ in range(T):
-    N = int(input().strip())        # 수의 개수
+    N = int(input())        # 수의 개수
     A = list(map(int, input().split()))  # 수열 A1..AN
     ans = -1                         # 단조 증가 곱이 없으면 -1 출력해야 하므로 초기값 -1
 

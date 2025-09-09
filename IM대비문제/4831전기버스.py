@@ -27,29 +27,58 @@ N = 종점 정류장 번호
 M = 충전기가 설치된 정류장 번호 
 '''
 
-T=int(input())
+T= int(input())
 
 for tc in range(1, T+1):
     K, N, M = map(int, input().split())
-    charge = list(map(int, input().split()))    # 충전기가 설치된 정류장 번호 
-    # 출발부터 종점까지 버스정류장 
-    # f_bs = list(range(0, N+1)) 
-    # print(f_bs)
-    result = 0
-    bus = [0] * (N + 1) #전체 버스 정류소 인덱스 형태로 입력 
+    charge = list(map(int, input().split()))
+
+    result = 0 # 충전횟수를 입력할 변수
+    bus = [0] * (N + 1)   # 종점까지 인덱스에 숫자 0 입력
+
     for i in charge:
         bus[i] = 1
+
+        bus_idx = 0 # 버스 위치
+        while bus_idx + K < N:   # 종점에 도착 전이면  
+            next = 0 # 충전소 위치 
+            for i in range(1, K+1): #배터리 최대 용량까지 가보기 
+                if bus[bus_idx + i] == 1: # 충전기가 있으면 
+                    next = bus_idx + i
+                if next > 0: # 충전기가 있으면 
+                    result += 1 
+                    bus_idx = next # 충전기가 버스의 위치가 됨
+                else: 
+                    result = 0 # 운행 불가 
+                    break
+        print(f'#{tc} {result}')
+
+
+
+# T=int(input())
+
+# for tc in range(1, T+1):
+#     K, N, M = map(int, input().split())
+#     charge = list(map(int, input().split()))    # 충전기가 설치된 정류장 번호 
+#     # 출발부터 종점까지 버스정류장 
+#     # f_bs = list(range(0, N+1)) 
+#     # print(f_bs)
+#     result = 0
+#     bus = [0] * (N + 1) #전체 버스 정류소 인덱스 형태로 입력 
+#     for i in charge:
+#         bus[i] = 1
     
-    busidx = 0 # 버스 위치 
-    while busidx + K < N: # 종점에 도착 전이면 
-        next = 0    # 다음 충전 위치
-        for i in range(1, K+1): # 배터리 최대 용량까지 가보기 
-            if bus[busidx + i] == 1: # 충전기가 있으면 
-                next = busidx + i # 충전기 위치 기록
-        if next > 0: # 충전기가 있으면
-            result += 1
-            busidx = next     # 충전기가 버스의 위치가 됨
-        else:
-            result = 0 # 운행 불가 
-            break
-    print(f'#{tc} {result}')
+#     busidx = 0 # 버스 위치 
+#     while busidx + K < N: # 종점에 도착 전이면 
+#         next = 0    # 다음 충전 위치
+#         for i in range(1, K+1): # 배터리 최대 용량까지 가보기 
+#             if bus[busidx + i] == 1: # 충전기가 있으면 
+#                 next = busidx + i # 충전기 위치 기록
+#         if next > 0: # 충전기가 있으면
+#             result += 1
+#             busidx = next     # 충전기가 버스의 위치가 됨
+#         else:
+#             result = 0 # 운행 불가 
+#             break
+
+#     print(f'#{tc} {result}')
