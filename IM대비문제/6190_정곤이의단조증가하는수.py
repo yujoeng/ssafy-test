@@ -16,15 +16,61 @@
 [출력]
 각 테스트 케이스마다 단조 증가하는 수인 Ai x Aj중에서 그 최댓값을 출력한다.
 만약 Ai x Aj중에서 단조 증가하는 수가 없다면 -1을 출력한다.
+
+
+import sys
+# 각 숫자의 자릿수가 d1 <= d2 <= ...<= dn 인지 확인 
+
+def is_monotone(N:int)-> bool:
+    s = str(N)   # 정수를 문자열로 바꿔 각 자릿수를 비교 
+    for i in range(len(s)-1):  # 인접한 자리끼리 비교 
+        if s[i] < s[i+1]:  # 앞자리가 뒷자리보다 크면 단조 증가 아님
+            return False
+        return True   # 끝까지 통과하면 단조증가 
+
+input = sys.stdin.readline
+T= int(input())    # 테스트케이스 수
+
+for tc in range(1, T+1):
+    N = int(input().strip()) # 수의 개수 
+    A = list(map(int, input().split())) # 수열
+    ans = -1 # 단조증가 곱이 없으면 -1 출력해야하므로 초기값 -1
+
+    # 모든 쌍(i, j), i < j 확인 
+    for i in range(N -1):
+        for j in range(i+1, N):
+            prod = A[i] * A[j]   # 두 수의 곱
+            # 현재 최대값보다 크고, 단조 증가이면 갱신
+            if prod > ans and is_monotone(prod):
+                ans = prod
+
+    print(ans)
+
 '''
+import sys
+input = sys.stdin.readline
+T = int(input())          # 테스트 케이스 수
 
-# T= int(input())
-# for tc in range(1, T+1):
-#     N = int(input())
-#     for i in range(N-1):
-#         for j in range(j+1,N):
-#             num = A[i] * A[j]
-#             # 단조증가 
+# 숫자의 각 자릿수가 d1 <= d2 <= ... <= dk 인지 확인
+def is_monotone(n: int) -> bool:
+    s = str(n)                      # 정수를 문자열로 바꿔 각 자릿수를 비교
+    for i in range(len(s) - 1):     # 인접한 자리끼리 비교
+        if s[i] > s[i + 1]:         # 앞자리가 뒷자리보다 크면 단조 증가 아님
+            return False
+    return True                     # 끝까지 통과하면 단조 증가
 
-#             if 단조증가 
-            
+
+for _ in range(T):
+    N = int(input().strip())        # 수의 개수
+    A = list(map(int, input().split()))  # 수열 A1..AN
+    ans = -1                         # 단조 증가 곱이 없으면 -1 출력해야 하므로 초기값 -1
+
+    # 모든 쌍 (i, j), i < j 확인
+    for i in range(N - 1):
+        for j in range(i + 1, N):
+            prod = A[i] * A[j]      # 두 수의 곱
+            # 현재 최댓값보다 크고, 단조 증가이면 갱신
+            if prod > ans and is_monotone(prod):
+                ans = prod
+
+    print(ans)
